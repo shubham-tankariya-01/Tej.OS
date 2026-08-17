@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Surfaces */
+    --bg-canvas: #090D16;
+    --bg-surface: #0F172A;
+    --bg-elevated: #1E293B;
+    --border-subtle: #1E293B;
+    --border-active: #334155;
+
+    /* Typography Colors */
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+
+    /* Functional Accents */
+    --accent-cyan: #06B6D4;
+    --accent-mint: #10B981;
+    --accent-amber: #F59E0B;
+    --accent-coral: #F43F5E;
+
+    /* Radii & Shadows */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-tactile: 2px 2px 0px 0px #020617;
+    --shadow-tactile-hover: 3px 3px 0px 0px #020617;
+  }
+
+  body {
+    @apply bg-canvas text-primary font-sans antialiased m-0 p-0 selection:bg-accent-cyan selection:text-canvas;
+  }
+}
