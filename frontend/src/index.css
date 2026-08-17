@@ -3,34 +3,33 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Base Surfaces */
-    --bg-canvas: #090D16;
-    --bg-surface: #0F172A;
-    --bg-elevated: #1E293B;
-    --border-subtle: #1E293B;
-    --border-active: #334155;
+  body {
+    @apply bg-bg-black text-text-on-dark font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-black tracking-tight;
+  }
+}
 
-    /* Typography Colors */
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-
-    /* Functional Accents */
-    --accent-cyan: #06B6D4;
-    --accent-mint: #10B981;
-    --accent-amber: #F59E0B;
-    --accent-coral: #F43F5E;
-
-    /* Radii & Shadows */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --shadow-tactile: 2px 2px 0px 0px #020617;
-    --shadow-tactile-hover: 3px 3px 0px 0px #020617;
+@layer components {
+  .btn-fab {
+    @apply w-14 h-14 rounded-full bg-card-coral text-surface-white flex items-center justify-center font-accent font-semibold text-2xl transition-transform hover:scale-105 active:scale-95 border-none shadow-none;
   }
 
-  body {
-    @apply bg-canvas text-primary font-sans antialiased m-0 p-0 selection:bg-accent-cyan selection:text-canvas;
+  .btn-icon {
+    @apply w-10 h-10 rounded-full bg-surface-white text-bg-black flex items-center justify-center shadow-soft transition-transform hover:scale-105 active:scale-95 border-none;
+  }
+  
+  .card-color {
+    @apply rounded-card p-6 md:p-7 text-text-on-color border-none shadow-none;
+  }
+  
+  .card-dark {
+    @apply bg-bg-black rounded-card p-6 md:p-7 text-text-on-dark border-none shadow-none;
+  }
+
+  .pill {
+    @apply rounded-pill px-4 py-2 flex items-center justify-between text-sm font-accent font-semibold;
   }
 }
