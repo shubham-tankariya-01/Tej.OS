@@ -31,3 +31,8 @@ Run tests with `pytest`:
 ```bash
 uv run pytest
 ```
+
+## File Storage
+- **Provider**: MongoDB GridFS (using Motor).
+- **Caps**: Uploads are restricted to **10MB per file**, with a maximum limit of **100MB per user** to strictly ensure the app remains fully within the MongoDB Atlas M0 free tier limits.
+- **Why**: Keeps all data entirely self-contained without requiring third-party services like Cloudinary.

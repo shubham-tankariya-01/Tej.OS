@@ -6,9 +6,15 @@ from datetime import datetime, timezone
 
 from app.db import get_users_collection
 from app.api.deps import get_current_user
-from app.schemas.user import UserInDB, UserPrivate, UserPublic
+from app.schemas.user import UserCreate, UserInDB, UserPrivate, UserPublic
 
 router = APIRouter(prefix="/users", tags=["Users"])
+
+@router.get("/me/streak-freezes")
+async def get_my_streak_freezes(
+    current_user: Annotated[UserInDB, Depends(get_current_user)]
+):
+    return {"streak_freeze_count": current_user.streak_freeze_count}
 
 class OnboardingUpdate(BaseModel):
     display_name: str
@@ -65,3 +71,16 @@ async def get_roster(
     cursor = users.find({})
     user_docs = await cursor.to_list(length=4)
     return [UserPublic(**doc) for doc in user_docs]
+
+class UserStreak(BaseModel):
+    current_streak: int
+    longest_streak: int
+    points_total: int
+
+@router.get("/me/streak", response_model=UserStreak)
+async def get_my_streak(current_user: Annotated[UserInDB, Depends(get_current_user)]):
+    return UserStreak(
+        current_streak=current_user.current_streak,
+        longest_streak=current_user.longest_streak,
+        points_total=current_user.points_total
+    )
