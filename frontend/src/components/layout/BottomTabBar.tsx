@@ -1,26 +1,42 @@
 import React from 'react';
-import { LayoutDashboard, Library, Plus, ListTodo, User } from 'lucide-react';
+import { useLocation, Link } from 'react-router-dom';
+import { LayoutDashboard, BookOpen, Users, Trophy, User } from 'lucide-react';
+
+const NAV_ITEMS = [
+    { path: '/',            icon: LayoutDashboard, label: 'Dashboard' },
+    { path: '/vault',       icon: BookOpen,         label: 'Vault' },
+    { path: '/roster',      icon: Users,            label: 'Roster' },
+    { path: '/leaderboard', icon: Trophy,           label: 'Leaderboard' },
+    { path: '/profile',     icon: User,             label: 'Profile' },
+];
 
 const BottomTabBar: React.FC = () => {
+    const location = useLocation();
+
     return (
-        <nav className="lg:hidden fixed bottom-4 left-4 right-4 bg-bg-black rounded-full p-2 flex justify-between items-center z-50 shadow-soft border border-[#1C1C1C]">
-            <button className="w-12 h-12 rounded-full bg-card-cyan flex items-center justify-center text-bg-black">
-                <LayoutDashboard strokeWidth={2.5} size={20} />
-            </button>
-            <button className="w-12 h-12 rounded-full flex items-center justify-center text-text-muted hover:text-text-on-dark transition-colors">
-                <Library strokeWidth={2.5} size={20} />
-            </button>
-            
-            <button className="btn-fab w-14 h-14 relative -top-4 -mx-2 flex items-center justify-center">
-                <Plus strokeWidth={3} size={28} />
-            </button>
-            
-            <button className="w-12 h-12 rounded-full flex items-center justify-center text-text-muted hover:text-text-on-dark transition-colors">
-                <ListTodo strokeWidth={2.5} size={20} />
-            </button>
-            <button className="w-12 h-12 rounded-full flex items-center justify-center text-text-muted hover:text-text-on-dark transition-colors">
-                <User strokeWidth={2.5} size={20} />
-            </button>
+        <nav className="lg:hidden fixed bottom-4 left-4 right-4 z-40 flex items-center justify-around
+                        bg-bg-black rounded-pill px-4 py-2.5 border border-[#1e1e1e]"
+             style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+            {NAV_ITEMS.map(({ path, icon: Icon, label }) => {
+                const isActive = path === '/'
+                    ? location.pathname === '/'
+                    : location.pathname.startsWith(path);
+
+                return (
+                    <Link
+                        key={path}
+                        to={path}
+                        aria-label={label}
+                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 ${
+                            isActive
+                                ? 'bg-card-cyan text-text-on-color scale-105'
+                                : 'text-text-muted hover:text-text-on-dark'
+                        }`}
+                    >
+                        <Icon size={19} strokeWidth={isActive ? 2.5 : 2} />
+                    </Link>
+                );
+            })}
         </nav>
     );
 };

@@ -152,17 +152,17 @@ const Onboarding: React.FC = () => {
                     </div>
                     
                     <div className="flex flex-col gap-4">
-                        <div className="bg-[#1C1C1C] p-4 rounded-xl border-l-4 border-card-coral">
-                            <h3 className="font-bold mb-1 uppercase tracking-tight">The Void</h3>
-                            <p className="text-sm text-text-muted">Miss a day, drop to zero. The void is absolute.</p>
+                        <div className="bg-[#1C1C1C] p-6 rounded-3xl border-2 border-card-coral">
+                            <h3 className="font-extrabold text-xl mb-1 uppercase tracking-tight text-surface-white">The Void</h3>
+                            <p className="font-medium text-sm text-text-muted">Miss a day, drop to zero. The void is absolute.</p>
                         </div>
-                        <div className="bg-[#1C1C1C] p-4 rounded-xl border-l-4 border-card-mustard">
-                            <h3 className="font-bold mb-1 uppercase tracking-tight">Comeback Multiplier</h3>
-                            <p className="text-sm text-text-muted">Recover from the void with accelerated points for 3 days.</p>
+                        <div className="bg-[#1C1C1C] p-6 rounded-3xl border-2 border-card-mustard">
+                            <h3 className="font-extrabold text-xl mb-1 uppercase tracking-tight text-surface-white">Comeback Multiplier</h3>
+                            <p className="font-medium text-sm text-text-muted">Recover from the void with accelerated points for 3 days.</p>
                         </div>
-                        <div className="bg-[#1C1C1C] p-4 rounded-xl border-l-4 border-card-mint">
-                            <h3 className="font-bold mb-1 uppercase tracking-tight">Vanguard Zone</h3>
-                            <p className="text-sm text-text-muted">Hard cap. Once you hit the Vanguard limit, you maintain it. No endless grinding.</p>
+                        <div className="bg-[#1C1C1C] p-6 rounded-3xl border-2 border-card-mint">
+                            <h3 className="font-extrabold text-xl mb-1 uppercase tracking-tight text-surface-white">Vanguard Zone</h3>
+                            <p className="font-medium text-sm text-text-muted">Hard cap. Once you hit the Vanguard limit, you maintain it. No endless grinding.</p>
                         </div>
                     </div>
                     

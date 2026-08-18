@@ -13,6 +13,16 @@ export interface UserPrivate {
     username: string;
     daily_commitment_format: DailyCommitmentFormat;
     points_rules_accepted: boolean;
+    current_streak: number;
+    longest_streak: number;
+    last_check_in_date: string | null;
+    points_total: number;
+    
+    // Phase 3 Points Engine State
+    ghost_mode: boolean;
+    streak_freeze_count: number;
+    recovery_day: number;
+    active_atonement_ids: string[];
 }
 
 interface AuthContextType {
